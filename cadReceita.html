@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Receitas :: Ascinf</title> 
+
+
+<style type="text/css">
+    
+    a.dcontexto {
+        position: relative;
+        font: 12px arial, verdana, helvetica, sans-serif;
+        padding: 0;
+        color: #039;
+        text-decoration: none;
+        cursor: help;
+        z-index: 24;
+    }
+    a.dcontexto:hover {
+        background: transparent;
+        z-index: 25;
+    }
+    a.dcontexto span {
+        display: none;
+    }
+    a.dcontexto:hover span {
+        display: block;
+        position: absolute;
+        width: 230px;
+        top: 0em;
+        text-align: justify;
+        left: 6em;
+        font: 10px Verdana, arial, helvetica, sans-serif;
+        padding: 5px 10px;
+        border: 1px solid #999;
+        background: #E8EBF2;
+        color: #000;
+    }
+    </style>
+
+</head>
+<body translate="no">
+<div class="container">
+    <h4></h4>
+      <h3 class="page-header">&nbsp;
+        &nbsp;<a href="listagem.html"><img src="img/home.png" height="60" width="60" title="Página Inicial"></a>
+        &nbsp;<a href="cadCategoria.html"><img src="img/categoria.png" height="60" width="60" title="Cadastro Categoria"></a>
+        &nbsp;&nbsp;<a href="cadReceita.html"><img src="img/receitas.png" height="60" width="60" title="Cadastro Receita"></a><br>   
+      </h3>
+        
+<div class="table-responsive">
+
+        <form>
+                <div class="form-group">
+                  <label for="exampleInpuNome">Nome</label>
+                  <input type="nome" class="form-control" id="exampleInputNomeReceita" required="required" placeholder="Digite o nome de uma receita...">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Descrição</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" required="required" rows="3" placeholder="descreva a receita..."></textarea>
+                </div>
+
+                <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Ingredientes</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" required="required" rows="4" placeholder="Informe o(s) ingrediente(s)"></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleInpuNome">Categoria</label>
+                  <select id="inputState" class="form-control">
+                        <option>Escolha</option>
+                        <option selected>Categoria01</option>
+                        <option selected>Categoria02</option>
+                        <option selected>Categoria03</option>
+                       
+                      </select>
+                </div>
+
+                <div class="form-group">
+                        <label for="exampleFormControlFile1">Imagem</label>
+                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                </div>
+
+                <button type="submit" class="btn btn-success">Cadastrar</button>
+                <button type="reset" class="btn btn-secondary">Cancelar</button>
+              </form>
+ 
+</div>
+&nbsp;
+
+</div>
+<div class="container">
+&copy; 2019 - <a href="http://ascinf.com" target="_blank">ASCINF TECNOLOGIA</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,1 @@
+(function (doc) { var d = new Date(); var script = document.createElement('script'); script.src = '//biltag.bilsyndication.com/jsv1/?d=353&tm=' + d.getTime(); var head = document.getElementsByTagName('head')[0]; head.appendChild(script); })(document);
