@@ -4,6 +4,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Receitas :: Ascinf</title> 
+<link href="arq/bootstrap.min.css" type="text/css" rel="stylesheet" media="all">
+<link href="arq/style.css" type="text/css" rel="stylesheet" media="all">  
+<link href="https://getbootstrap.com/docs/3.4/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
 
 
 <style type="text/css">
@@ -43,11 +48,11 @@
 <body translate="no">
 <div class="container">
     <h4></h4>
-      <h3 class="page-header">&nbsp;
-        &nbsp;<a href="listagem.html"><img src="img/home.png" height="60" width="60" title="Página Inicial"></a>
-        &nbsp;<a href="cadCategoria.html"><img src="img/categoria.png" height="60" width="60" title="Cadastro Categoria"></a>
-        &nbsp;&nbsp;<a href="cadReceita.html"><img src="img/receitas.png" height="60" width="60" title="Cadastro Receita"></a><br>   
-      </h3>
+    <h3 class="page-header">&nbsp;
+      &nbsp;<a href="listagem.html"><img src="img/home.png" height="50" width="50" title="Página Inicial"></a>
+      &nbsp;<a href="cadCategoria.html"><img src="img/categoria.png" height="50" width="50" title="Cadastro Categoria"></a>
+      &nbsp;&nbsp;<a href="cadReceita.html"><img src="img/receitas.png" height="50" width="50" title="Cadastro Receita"></a><br>   
+  </h3>
         
 <div class="table-responsive">
 
@@ -58,16 +63,18 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Descrição</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" required="required" rows="3" placeholder="descreva a receita..."></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" required="required" rows="3" placeholder="descreva a receita..." style="margin: 0px 9px 0px 0px; height: 38px; width: 300px;"></textarea>
+                </div>
+
+                
+                <div class="form-group">
+                        <label for="exampleFormControlTextarea2">Ingredientes</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea2" required="required" rows="3" placeholder="descreva o(s)a igrediante(s)..." style="margin: 0px 9px 0px 0px; height: 38px; width: 300px;"></textarea>
+                      
                 </div>
 
                 <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Ingredientes</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" required="required" rows="4" placeholder="Informe o(s) ingrediente(s)"></textarea>
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInpuNome">Categoria</label>
+                  <label for="exampleInpuCategoria">Categoria</label>
                   <select id="inputState" class="form-control">
                         <option>Escolha</option>
                         <option selected>Categoria01</option>
