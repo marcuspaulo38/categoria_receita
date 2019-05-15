@@ -6,6 +6,7 @@
 
 <title>Listagem :: Ascinf</title> 
 <link rel='stylesheet' href='arq/bootstrap.min.css'>
+<script src="arq/jquery-1.11.2.min.js"></script>
 
 
 <style type="text/css">
@@ -41,6 +42,31 @@
     }
     </style>
 
+<script>
+$(document).ready(function(){
+            $('#tabela').empty(); //Limpando a tabela
+            $.ajax({
+                type:'post',		//Definimos o método HTTP usado
+                dataType: 'json',	//Definimos o tipo de retorno
+                url: 'getFromDatabase.php',//Definindo o arquivo onde serão buscados os dados
+                success: function(dados){
+                    for(var i=0;dados.length>i;i++){
+                        //Adicionando registros retornados na tabela
+                        //$('#tabela').append('<tr><td>'+dados[i].id+'</td><td>'+dados[i].nome+'</td></tr>');
+
+                        $('#tabela').append('<tr><td><a href="#">'+dados[i].nome+'</a></td>'
+                                                 +'<td>'+dados[i].categoria+'</td>'
+                                                 +'<td><a href="#"><img src="img/edit.png" height="30" width="30" title="Editar"></center></a></td>'
+                                                 +'<td><a href="#"><img src="img/delete.png" height="30" width="30" title="Excluir"></center></a></td>'
+                                                 +'</tr>');
+    
+
+                    }
+                }
+            });
+        });
+</script>
+
 </head>
 <body translate="no">
 <div class="container center-align">
@@ -56,54 +82,15 @@
         
 <thead>
 <tr>
-<th colspan='2'><center>Categorias &  Receitas</center></th>
+<th colspan='2'><center>Receitas & Categorias</center></th>
 <th colspan="2"><center>Opções</center></th>
 
 </tr>
 </thead>
-<tbody>
-<tr>
-    <td><a href="#" class="dcontexto"><center>Categoria01</center><span>Receita 01 vinda da base de dados</span></a></td>
-    <td><center>Receita01</center></td>
-    <td><center><img src="img/edit.png" height="30" width="30" title="Editar"></center></td>
-    <td><center><img src="img/delete.png" height="30" width="30" title="Excluir"></center></td>
-</tr>
-<tr>
-        <td><a href="#" class="dcontexto"><center>Categoria02</center><span>Receita 02 vinda da base de dados</span></a></td>
-        <td><center>Receita02</center></td>
-        <td><center><img src="img/edit.png" height="30" width="30" title="Editar"></center></td>
-        <td><center><img src="img/delete.png" height="30" width="30" title="Excluir"></center></td>
-</tr>
-<tr>
-        <td><a href="#" class="dcontexto"><center>Categoria03</center><span>Receita 03 vinda da base de dados</span></a></td>
-        <td><center>Receita02</center></td>
-        <td><center><img src="img/edit.png" height="30" width="30" title="Editar"></center></td>
-        <td><center><img src="img/delete.png" height="30" width="30" title="Excluir"></center></td>
-</tr>
-<tr>
-        <td><a href="#" class="dcontexto"><center>Categoria04</center><span>Receita 04 vinda da base de dados</span></a></td>
-        <td><center>Receita04</center></td>
-        <td><center><img src="img/edit.png" height="30" width="30" title="Editar"></center></td>
-        <td><center><img src="img/delete.png" height="30" width="30" title="Excluir"></center></td>
-</tr>
-<tr>
-<tr>
-        <td><a href="#" class="dcontexto"><center>Categoria05</center><span>Receita 05 vinda da base de dados</span></a></td>
-        <td><center>Receita05</center></td>
-        <td><center><img src="img/edit.png" height="30" width="30" title="Editar"></center></td>
-        <td><center><img src="img/delete.png" height="30" width="30" title="Excluir"></center></td>
-</tr>
-<tr>
-        <td><a href="#" class="dcontexto"><center>Categoria06</center><span>Receita 06 vinda da base de dados</span></a></td>
-        <td><center>Receita06</center></td>
-        <td><center><img src="img/edit.png" height="30" width="30" title="Editar"></center></td>
-        <td><center><img src="img/delete.png" height="30" width="30" title="Excluir"></center></td>
-</tr>
+<tbody id="tabela">
 </tbody>
 </table>
 </div>
-
-
 
 </div>
 <div class="container">
