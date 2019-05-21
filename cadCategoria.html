@@ -5,7 +5,8 @@
 <meta charset="UTF-8">
 <title>Categorias :: Ascinf</title> 
 <link href="arq/bootstrap.min.css" type="text/css" rel="stylesheet" media="all">
-<link href="arq/style.css" type="text/css" rel="stylesheet" media="all">  
+<link href="arq/style.css" type="text/css" rel="stylesheet" media="all">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
 
 
 
@@ -42,6 +43,34 @@
     }
     </style>
 
+<script>
+   
+        $(function(){
+         // Executa assim que o botão de salvar for clicado
+         $('#but_salvar').click(function(){
+             // Pega os valores dos inputs e coloca nas variáveis
+             var nome = $('#nome').val();
+             
+     
+             // Método post do Jquery
+             $.post('getInsertDatabase.php', {
+                 nome:nome
+                
+             }, function(resposta){
+                 // Valida a resposta
+                 if(resposta == 1){
+                     // Limpa os inputs
+                     $('input, textarea').val('');
+                     alert('Dados enviados com sucesso.');
+                 }else {
+                     alert(resposta);
+                 }
+             });
+             return false;
+         });
+     });
+     </script>
+
 </head>
 <body translate="no">
 <div class="container center-align">
@@ -54,15 +83,18 @@
    
 <div class="table-responsive">
 
-        <form>
+        <form action="salvar.php" method="post">
                 <div class="form-group">
                   <label for="exampleInpuNome">Nome </label>
-                  <input type="nome" class="form-control" id="exampleInputNomeCategoria" required="required" placeholder="Digite o nome de uma categoria..." >
+                  <input type="text" class="form-control" id="nome" nome="nome" required=true placeholder="Digite o nome de uma categoria..." >
                 </div>
-                <button type="submit" class="btn btn-success">Cadastrar</button>
+                <button type="submit" class="btn btn-success" id="but_salvar" >Cadastrar</button>
                 <button type="reset" class="btn btn-secondary">Cancelar</button>
               </form>
- 
+              <p id="resultado"></p>
+
+
+              
 </div>
 &nbsp;
 

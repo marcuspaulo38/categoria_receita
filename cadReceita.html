@@ -44,6 +44,33 @@
     }
     </style>
 
+<script>
+   
+        $(function(){
+         // Executa assim que o botão de salvar for clicado
+         $('#but_salvar1').click(function(){
+             // Pega os valores dos inputs e coloca nas variáveis
+             var nomeReceita       = $('#nomeReceita').val();
+            
+             // Método post do Jquery
+             $.post('getInsertDatabase1.php', {
+                nomeReceita      :nomeReceita
+                
+             }, function(resposta){
+                 // Valida a resposta
+                 if(resposta == 1){
+                     // Limpa os inputs
+                     $('input, textarea').val('');
+                     alert('Dados enviados com sucesso.');
+                 }else {
+                     alert(resposta);
+                 }
+             });
+             return false;
+         });
+     });
+</script>
+
 </head>
 <body translate="no">
 <div class="container center-align">
@@ -56,43 +83,44 @@
         
 <div class="table-responsive">
 
-        <form>
+        <form action="salvar1.php" method="post">
                 <div class="form-group">
                   <label for="exampleInpuNome">Nome</label>
-                  <input type="nome" class="form-control" id="exampleInputNomeReceita" required="required" placeholder="Digite o nome de uma receita...">
+                  <input type="text" class="form-control" id="nomeReceita" nome="nomeReceita" required="true" placeholder="Digite o nome..." >
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Descrição</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" required="required" rows="3" placeholder="descreva a receita..." style="margin: 0px 9px 0px 0px; height: 38px; width: 300px;"></textarea>
+                    <textarea class="form-control" id="DescricaoReceita" required="required" rows="3" placeholder="descreva a receita..." style="margin: 0px 9px 0px 0px; height: 38px; width: 300px;"></textarea>
                 </div>
 
                 
                 <div class="form-group">
                         <label for="exampleFormControlTextarea2">Ingredientes</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea2" required="required" rows="3" placeholder="descreva o(s)a igrediante(s)..." style="margin: 0px 9px 0px 0px; height: 38px; width: 300px;"></textarea>
+                        <textarea class="form-control" id="igredianteReceita" required="required" rows="3" placeholder="descreva o(s)a igrediante(s)..." style="margin: 0px 9px 0px 0px; height: 38px; width: 300px;"></textarea>
                       
                 </div>
 
                 <div class="form-group">
-                  <label for="exampleInpuCategoria">Categoria</label>
+                  <label for="categoriaReceita">Categorias</label>
                   <select id="inputState" class="form-control">
                         <option>Escolha</option>
                         <option selected>Categoria01</option>
                         <option selected>Categoria02</option>
                         <option selected>Categoria03</option>
+                        <option selected>Categoria04</option>
                        
                       </select>
                 </div>
 
                 <div class="form-group">
-                        <label for="exampleFormControlFile1">Imagem</label>
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                </div>
-
-                <button type="submit" class="btn btn-success">Cadastrar</button>
+                        <label for="imagemReceita">Imagem</label>
+                        <input type="file" class="form-control-file" nome="imagemReceita" id="imagemReceita">
+                </div-->
+               
+                <button type="submit" class="btn btn-success" id="but_salvar1" >Cadastrar</button>
                 <button type="reset" class="btn btn-secondary">Cancelar</button>
               </form>
- 
+              <p id="resultado"></p>
 </div>
 &nbsp;
 
@@ -102,3 +130,5 @@
 </div>
 </body>
 </html>
+
+                

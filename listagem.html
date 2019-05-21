@@ -44,17 +44,15 @@
 
 <script>
 $(document).ready(function(){
-            $('#tabela').empty(); //Limpando a tabela
+            $('#tabela').empty(); 
             $.ajax({
-                type:'post',		//Definimos o método HTTP usado
-                dataType: 'json',	//Definimos o tipo de retorno
-                url: 'getFromDatabase.php',//Definindo o arquivo onde serão buscados os dados
+                type:'post',		
+                dataType: 'json',	
+                url: 'getFromDatabase.php',
                 crossDomain: true,
                 success: function(dados){
                     for(var i=0;dados.length>i;i++){
-                        //Adicionando registros retornados na tabela
-                        //$('#tabela').append('<tr><td>'+dados[i].id+'</td><td>'+dados[i].nome+'</td></tr>');
-
+                        
                         $('#tabela').append('<tr><td><a href="#">'+dados[i].nome+'</a></td>'
                                                  +'<td>'+dados[i].categoria+'</td>'
                                                  +'<td><a href="#"><img src="img/edit.png" height="30" width="30" title="Editar"></center></a></td>'
@@ -83,7 +81,7 @@ $(document).ready(function(){
         
 <thead>
 <tr>
-<th colspan='2'><center>Receitas & Categorias</center></th>
+<th colspan='2'><center>Receita & Categorias</center></th>
 <th colspan="2"><center>Opções</center></th>
 
 </tr>
