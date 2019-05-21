@@ -3,12 +3,16 @@
  header('Access-Control-Allow-Methods: GET, POST, PUT');
 
 
- $nomeReceita      = $_POST['nomeReceita'];
+ $nomeReceita         = $_POST['nomeReceita'];
+ $descricaoReceita    = $_POST['descricaoReceita'];
+ $ingredientesReceita = $_POST['ingredientesReceita'];
+ $categoriaReceita    = $_POST['categoriaReceita'];
+ $imagemReceita       =  $_POST['imagemReceita'];
  
- if(empty(  $nomeReceita )) 
+ if(empty(  $nomeReceita ) | empty(  $descricaoReceita ) | empty(  $ingredientesReceita ) | empty(  $categoriaReceita )) 
  {
 
-    echo "Faltando dados: ";
+    echo "Está faltando dados: Nome, Receita ou Descrição";
 
  }else{
 
@@ -23,11 +27,11 @@ if (!$conn) {
       die("Connection failed: " . mysqli_connect_error());
 }
  
-echo "Connected successfully";
+echo "Successo: ";
  
-$sql = "INSERT INTO receita (nome) VALUES ($nomeReceita)";
+$sql = "INSERT INTO receita (nome, descricao, igredientes, categoria, imagem) VALUES ('".$nomeReceita."', '".$descricaoReceita."','".$ingredientesReceita."', '".$categoriaReceita."', '".$imagemReceita."')";
 if (mysqli_query($conn, $sql)) {
-      echo "Nova receita inserida com sucesso";
+      echo "Nova receita inserida.";
 } else {
       echo "Erro: " . $sql . "<br>" . mysqli_error($conn);
 }

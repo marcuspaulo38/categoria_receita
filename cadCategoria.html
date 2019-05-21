@@ -46,18 +46,18 @@
 <script>
    
         $(function(){
-         // Executa assim que o botão de salvar for clicado
+       
          $('#but_salvar').click(function(){
-             // Pega os valores dos inputs e coloca nas variáveis
+            
              var nome = $('#nome').val();
              
      
-             // Método post do Jquery
+            
              $.post('getInsertDatabase.php', {
                  nome:nome
                 
              }, function(resposta){
-                 // Valida a resposta
+                
                  if(resposta == 1){
                      // Limpa os inputs
                      $('input, textarea').val('');

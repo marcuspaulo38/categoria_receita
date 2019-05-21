@@ -3,11 +3,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Receitas :: Ascinf</title> 
+<title>Categorias :: Ascinf</title> 
 <link href="arq/bootstrap.min.css" type="text/css" rel="stylesheet" media="all">
-<link href="arq/style.css" type="text/css" rel="stylesheet" media="all">  
-<link href="https://getbootstrap.com/docs/3.4/dist/css/bootstrap.min.css" rel="stylesheet">
-
+<link href="arq/style.css" type="text/css" rel="stylesheet" media="all">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
 
 
 
@@ -47,17 +46,26 @@
 <script>
    
         $(function(){
-         // Executa assim que o botão de salvar for clicado
+       
          $('#but_salvar1').click(function(){
-             // Pega os valores dos inputs e coloca nas variáveis
-             var nomeReceita       = $('#nomeReceita').val();
             
-             // Método post do Jquery
+             var nomeReceita = $('#nomeReceita').val();
+             var descricaoReceita = $('#descricaoReceita').val();
+             var ingredientesReceita = $('#ingredientesReceita').val();
+             var categoriaReceita = $('#categoriaReceita').val();
+             var imagemReceita = $('#imagemReceita').val();
+             
+             
+            
              $.post('getInsertDatabase1.php', {
-                nomeReceita      :nomeReceita
+                nomeReceita:nomeReceita,
+                descricaoReceita:descricaoReceita,
+                ingredientesReceita:ingredientesReceita,
+                categoriaReceita:categoriaReceita,
+                imagemReceita:imagemReceita
                 
              }, function(resposta){
-                 // Valida a resposta
+                
                  if(resposta == 1){
                      // Limpa os inputs
                      $('input, textarea').val('');
@@ -69,58 +77,74 @@
              return false;
          });
      });
-</script>
+     </script>
+
+<script>
+    $(document).ready(function(){
+                $('#categoriaReceita').empty(); 
+                $.ajax({
+                    type:'post',		
+                    dataType: 'json',	
+                    url: 'getFromDatabase2.php',
+                    crossDomain: true,
+                    success: function(dados){
+                        for(var i=0;dados.length>i;i++){
+                             $('#categoriaReceita').append('<option>'+dados[i].nome+'</option>');
+                        }
+                    }
+                });
+            });
+    </script>
 
 </head>
 <body translate="no">
 <div class="container center-align">
     <p></p>
     <h3 class="page-header">&nbsp;
-        &nbsp;<a href="listagem.html"><img src="img/home.png" height="60" width="60" title="Home"></a>
-        &nbsp;<a href="cadCategoria.html"><img src="img/categoria.png" height="60" width="60" title="Categoria"></a>
-        &nbsp;<a href="cadReceita.html"><img src="img/Receitas.png" height="60" width="60" title="Receita"></a><br>   
+            &nbsp;<a href="listagem.html"><img src="img/home.png" height="60" width="60" title="Home"></a>
+            &nbsp;<a href="cadCategoria.html"><img src="img/categoria.png" height="60" width="60" title="Categoria"></a>
+            &nbsp;<a href="cadReceita.html"><img src="img/Receitas.png" height="60" width="60" title="Receita"></a><br>   
     </h3>
-        
+   
 <div class="table-responsive">
 
         <form action="salvar1.php" method="post">
                 <div class="form-group">
-                  <label for="exampleInpuNome">Nome</label>
-                  <input type="text" class="form-control" id="nomeReceita" nome="nomeReceita" required="true" placeholder="Digite o nome..." >
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Descrição</label>
-                    <textarea class="form-control" id="DescricaoReceita" required="required" rows="3" placeholder="descreva a receita..." style="margin: 0px 9px 0px 0px; height: 38px; width: 300px;"></textarea>
-                </div>
-
-                
-                <div class="form-group">
-                        <label for="exampleFormControlTextarea2">Ingredientes</label>
-                        <textarea class="form-control" id="igredianteReceita" required="required" rows="3" placeholder="descreva o(s)a igrediante(s)..." style="margin: 0px 9px 0px 0px; height: 38px; width: 300px;"></textarea>
-                      
+                  <label for="nomeReceita">Nome </label>
+                  <input type="text" class="form-control" id="nomeReceita" nome="nomeReceita" required="true" placeholder="Digite o nome de uma categoria..." >
                 </div>
 
                 <div class="form-group">
-                  <label for="categoriaReceita">Categorias</label>
-                  <select id="inputState" class="form-control">
-                        <option>Escolha</option>
-                        <option selected>Categoria01</option>
-                        <option selected>Categoria02</option>
-                        <option selected>Categoria03</option>
-                        <option selected>Categoria04</option>
-                       
-                      </select>
+                    <label for="descricaoReceita">Descrição </label>
+                    <textarea class="form-control" id="descricaoReceita" nome="descricaoReceita" required="true" rows="3" placeholder="descreva a receita..." style="margin: 0px 9px 0px 0px; height: 38px; width: 300px;"></textarea>
                 </div>
 
                 <div class="form-group">
-                        <label for="imagemReceita">Imagem</label>
-                        <input type="file" class="form-control-file" nome="imagemReceita" id="imagemReceita">
-                </div-->
-               
+                    <label for="ingredientesReceita">Ingredientes </label>
+                    <textarea class="form-control" id="ingredientesReceita" nome="ingredientesReceita" required="true" rows="3" placeholder="descreva o ingrediete..." style="margin: 0px 9px 0px 0px; height: 38px; width: 300px;"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="categoriaReceita">Categorias</label>
+                    <select id="categoriaReceita" nome="categoriaReceita" class="form-control">
+                          <option>Escolha</option>
+                          <option selected></option>
+                          
+                        </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="imagemReceita">Imagem</label>
+                    <input type="file" class="form-control-file" nome="imagemReceita" id="imagemReceita">
+                  </div>
+
                 <button type="submit" class="btn btn-success" id="but_salvar1" >Cadastrar</button>
                 <button type="reset" class="btn btn-secondary">Cancelar</button>
               </form>
               <p id="resultado"></p>
+
+
+              
 </div>
 &nbsp;
 
@@ -130,5 +154,3 @@
 </div>
 </body>
 </html>
-
-                
